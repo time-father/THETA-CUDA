@@ -1,0 +1,9 @@
+/build/
+/output/
+*.bin
+*.csv
+*.log
+*.tmp
+*.bak
+.DS_Store
+.vscode/

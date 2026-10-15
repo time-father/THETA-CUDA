@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<input>
+    <settings>
+        <n_batch>2500</n_batch>
+        <inactive_batch>500</inactive_batch>
+        <n_track>64000</n_track>
+        <active_length>200</active_length>
+        <inactive_length>20</inactive_length>
+        <hardware>gpu</hardware>
+        <source_mode>flat</source_mode>
+        <enable_flux_output>true</enable_flux_output>
+        <max_order>0</max_order>
+        <transport_algorithm>history</transport_algorithm>
+        <event_seg_count> 8 </event_seg_count>
+        <ray_mode>default</ray_mode>
+        <ray_resample_rate>0</ray_resample_rate>
+
+        <solver_type>random_ray</solver_type>
+        <run_mode>eigenvalue</run_mode>
+        <volume_type>adaptive</volume_type>
+        <iteration_type>jacobi</iteration_type>
+        <use_uncollided_source>false</use_uncollided_source>
+        <enable_ray_scan_output>false</enable_ray_scan_output>
+        <shannon_entropy>true</shannon_entropy>
+        <adjoint>false</adjoint>
+    </settings>
+    <output>
+        <flux_std>output/iaea_flux_std.bin</flux_std>
+        <flux>output/iaea_flux.bin</flux>
+        <time>output/iaea_time.csv</time>
+        <run_info>output/iaea_run_info.json</run_info>
+        <batch_info>output/iaea_batch_info.csv</batch_info>
+        <binary precision="double">true</binary>
+    </output>
+    <model>
+        <x>
+            <edges> 0.0 18.0 48.0 78.0 96.0</edges>
+            <resolutions> 72 120 120 72 </resolutions>
+            <boundary> 1 1 </boundary>
+        </x>
+        <y>
+            <edges> 0.0 18.0 43.0 68.0 86.0 </edges>
+            <resolutions> 72 100 100 72 </resolutions>
+            <boundary> 1 1 </boundary>
+        </y>
+        <z>
+            <edges> 0 40 </edges>
+            <resolutions> 80 </resolutions>
+            <boundary> 1 1 </boundary>
+        </z>
+        <materials>
+      0 0 0 0
+      0 1 2 0
+      0 4 3 0
+      0 0 0 0
+        </materials>
+    </model>
+    <materials>
+        <ng> 1 </ng>
+        <material id="0">
+            <sigma_t> 0.90 </sigma_t>
+            <sigma_s> 0.89 </sigma_s>
+        </material>
+        <material id="1">
+            <sigma_t> 0.6 </sigma_t>
+            <sigma_s> 0.53 </sigma_s>
+            <nu_sigma_f> 0.079 </nu_sigma_f>
+            <chi> 1.0 </chi>
+        </material>
+        <material id="2">
+            <sigma_t> 0.48 </sigma_t>
+            <sigma_s> 0.20 </sigma_s>
+        </material>
+        <material id="3">
+            <sigma_t> 0.7 </sigma_t>
+            <sigma_s> 0.66 </sigma_s>
+            <nu_sigma_f> 0.043 </nu_sigma_f>
+            <chi> 1.0 </chi>
+        </material>
+        <material id="4">
+            <sigma_t> 0.65 </sigma_t>
+            <sigma_s> 0.50 </sigma_s>
+        </material>
+    </materials>
+</input>
